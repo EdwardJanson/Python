@@ -18,19 +18,16 @@ def guess_number(difficulty):
 
     if guess == random_number:
       print(f"You win! The answer is {random_number}.")
-      return "win"
     elif guess > random_number:
+      print(f"Too high.")
       attempts -= 1
       if attempts == 0:
         print("You've run out of guesses. You lose.")
-      else:
-        print(f"Too high. Guess again.")
     elif guess < random_number:
+      print(f"Too low.")
       attempts -= 1
       if attempts == 0:
         print("You've run out of guesses. You lose.")
-      else:
-        print(f"Too low. Guess again.")
 
 print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
 
