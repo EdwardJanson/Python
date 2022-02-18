@@ -1,5 +1,5 @@
 import random
-from game-data import data
+from game_data import data
 
 def random_number():
   random_number = random.randint(0, len(data) - 1)
