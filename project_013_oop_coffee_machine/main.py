@@ -9,7 +9,7 @@ menu = Menu()
 machine_on = True
 
 while machine_on:
-    drink_selected = input(f"What would you like? ({Menu.get_items(menu)}): ")
+    drink_selected = input(f"What would you like? ({menu.get_items()}): ")
     if drink_selected == "off":
         machine_on = False
     elif drink_selected == "report":
