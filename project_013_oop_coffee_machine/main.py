@@ -22,4 +22,3 @@ while machine_on:
             payment_sufficient = money_machine.make_payment(drink_detail.cost)
             if payment_sufficient:
                 coffee_maker.make_coffee(drink_detail)
-                coffee_maker.report()
