@@ -15,4 +15,4 @@ while quiz.still_has_questions():
     quiz.next_question()
 
 print("The quiz is now completed.")
-print(f"Your final score is: {quiz.score}/{len(quiz.question_number)}")
+print(f"Your final score is: {quiz.score}/{quiz.question_number}")
