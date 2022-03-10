@@ -31,7 +31,7 @@ def add_password():
     email = email_entry.get()
     password = password_entry.get()
 
-    if len(website) == 0 and len(email) == 0 and len(password) == 0:
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
     else:
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} "
