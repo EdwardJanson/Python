@@ -6,7 +6,6 @@ FLIGHT_ENDPOINT = "https://tequila-api.kiwi.com/"
 API_KEY = os.environ.get("API_KEY")
 
 
-
 class FlightSearch:
 
     def get_destination_code(self, city_name):
