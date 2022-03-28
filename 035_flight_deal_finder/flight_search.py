@@ -2,25 +2,27 @@ from flight_data import FlightData
 import requests
 import os
 
+FLIGHT_ENDPOINT = "https://tequila-api.kiwi.com/"
+API_KEY = os.environ.get("API_KEY")
+
+
 
 class FlightSearch:
 
-    def __init__(self):
-        self.flight_endpoint = "https://tequila-api.kiwi.com/"
-        self.headers = {
-            "apikey": f"{os.environ.get('API_KEY')}"
-        }
-
     def get_destination_code(self, city_name):
+        headers = {
+            "apikey": API_KEY
+        }
+        
         parameters = {
             "term": city_name,
             "location_types": "city"
         }
 
         response = requests.get(
-            f"{self.flight_endpoint}/locations/query",
+            f"{FLIGHT_ENDPOINT}/locations/query",
             params=parameters,
-            headers=self.headers
+            headers=headers
         )
 
         data = response.json()["locations"]
@@ -28,6 +30,10 @@ class FlightSearch:
         return city_code
 
     def search_flights(self, origin_city_code, destination_city_code, from_time, to_time):
+        headers = {
+            "apikey": API_KEY
+        }
+ 
         parameters = {
             "fly_from": origin_city_code,
             "fly_to": destination_city_code,
@@ -42,9 +48,9 @@ class FlightSearch:
             }
 
         response = requests.get(
-            f"{self.flight_endpoint}v2/search",
+            f"{FLIGHT_ENDPOINT}v2/search",
             params=parameters,
-            headers=self.headers
+            headers=headers
         )
 
         try:
