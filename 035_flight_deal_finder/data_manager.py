@@ -1,21 +1,23 @@
 import requests
 import os
 
+SHEET_ENDPOINT = os.environ.get("SHEET_ENDPOINT")
+AUTH_KEY = os.environ.get("AUTH_KEY")
+
 
 class DataManager:
 
     def __init__(self):
-        self.sheet_endpoint = os.environ.get("SHEET_ENDPOINT")
-        self.headers = {
-            "Authorization": f"{os.environ.get('AUTH_KEY')}"
-        }
+        self.
         self.destination_data = {}
-        self.cities = []
 
     def get_destination_data(self):
+        headers = {
+            "Authorization": AUTH_KEY
+        }
         response = requests.get(
-            url=f"{self.sheet_endpoint}",
-            headers=self.headers
+            url=SHEET_ENDPOINT,
+            headers=headers
         )
         self.destination_data = response.json()["prices"]
         return self.destination_data
