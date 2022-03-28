@@ -8,7 +8,6 @@ AUTH_KEY = os.environ.get("AUTH_KEY")
 class DataManager:
 
     def __init__(self):
-        self.
         self.destination_data = {}
 
     def get_destination_data(self):
@@ -30,6 +29,6 @@ class DataManager:
                 }
             }
             requests.put(
-                url=f"{self.sheet_endpoint}/{city['id']}",
+                url=f"{SHEET_ENDPOINT}/{city['id']}",
                 json=new_data
             )
