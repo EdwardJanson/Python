@@ -1,7 +1,9 @@
+from customer_acquisition import CustomerAcquisition
 import requests
 import os
 
-SHEET_ENDPOINT = os.environ.get("SHEET_ENDPOINT")
+SHEET_PRICES_ENDPOINT = os.environ.get("SHEET_PRICES_ENDPOINT")
+SHEET_USERS_ENDPOINT = os.environ.get("SHEET_USERS_ENDPOINT")
 AUTH_KEY = os.environ.get("AUTH_KEY")
 
 
@@ -15,7 +17,7 @@ class DataManager:
             "Authorization": AUTH_KEY
         }
         response = requests.get(
-            url=SHEET_ENDPOINT,
+            url=SHEET_PRICES_ENDPOINT,
             headers=headers
         )
         self.destination_data = response.json()["prices"]
@@ -29,6 +31,13 @@ class DataManager:
                 }
             }
             requests.put(
-                url=f"{SHEET_ENDPOINT}/{city['id']}",
+                url=f"{SHEET_PRICES_ENDPOINT}/{city['id']}",
                 json=new_data
             )
+
+    def get_customer_emails(self):
+        customers_endpoint = SHEET_USERS_ENDPOINT
+        response = requests.get(url=customers_endpoint)
+        data = response.json()
+        customer_data = data["users"]
+        return customer_data
